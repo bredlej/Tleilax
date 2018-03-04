@@ -14,6 +14,9 @@ class PlayerNode: SKSpriteNode {
     private var flyingFrames : [SKTexture] = []
     private var rotatingFrames : [SKTexture] = []
     private var isRotatingState : Bool = false
+    private var lastTouchPosition = CGPoint(x:0.0, y:0.0)
+    
+    private let SPEED = 2.0
     
     func initialSetup() {
         self.laserEmitter = self.childNode(withName: "//LaserEmitter") as? SKSpriteNode
@@ -49,28 +52,5 @@ class PlayerNode: SKSpriteNode {
                                                          resize: false,
                                                          restore: true)),
                  withKey: "rotatingShip")
-        
-        var vector = CGVector()
-        vector.dx = left ? -20.0 : 20.0
-        self.run(SKAction.repeatForever(SKAction.move(by: vector, duration: 0.1)))
-    }
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
-        self.laserEmitter?.isHidden = false
-        if (!isRotatingState) {
-            rotate(left: pos.x < self.position.x)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        
-        self.laserEmitter?.isHidden = true
-        self.removeAllActions()
-        animate()
     }
 }

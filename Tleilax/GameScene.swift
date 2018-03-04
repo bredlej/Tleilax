@@ -11,8 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+    var entityManager: EntityManager!
     
     private var lastUpdateTime : TimeInterval = 0
     private var playerNode : PlayerNode?
@@ -22,19 +22,37 @@ class GameScene: SKScene {
         self.lastUpdateTime = 0
         self.playerNode = self.childNode(withName: "Player") as? PlayerNode
         self.playerNode?.initialSetup()
+        self.playerNode?.isHidden = true
+        
+        entityManager = EntityManager(scene: self)
+        let player = Player("shipAnim")
+        initPlayer(player)
+        entityManager.add(player)
     }
     
+    func initPlayer(_ player: Player) {
+        if let spriteComponent = player.component(ofType: SpriteComponent.self) {
+            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/2, y: spriteComponent.node.size.height/2)
+            if let animationComponent = player.component(ofType: AnimationComponent.self) {
+                spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames,
+                                                                                 timePerFrame: 0.1,
+                                                                                 resize: false,
+                                                                                 restore: true)),
+                                         withKey: animationComponent.key)
+            }
+        }
+    }
     
     func touchDown(atPoint pos : CGPoint) {
-        self.playerNode?.touchDown(atPoint: pos)
+
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        self.playerNode?.touchMoved(toPoint: pos)
+
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        self.playerNode?.touchUp(atPoint: pos)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,7 +85,7 @@ class GameScene: SKScene {
         let dt = currentTime - self.lastUpdateTime
         
         // Update entities
-        for entity in self.entities {
+        for entity in entityManager.entities {
             entity.update(deltaTime: dt)
         }
 
