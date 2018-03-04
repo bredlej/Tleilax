@@ -11,14 +11,16 @@ import SpriteKit
 
 class AnimationComponent: GKComponent {
     
-    var frames : [SKTexture] = []
-    var key : String = ""
+    var frames : [GKState: [SKTexture]] = [:]
     
-    init(textureAtlas: SKTextureAtlas, key: String) {
-        for textureName in textureAtlas.textureNames {
-            frames.append(textureAtlas.textureNamed(textureName))
+    init(stateToTextureMap : [GKState: SKTextureAtlas]) {
+        for state in stateToTextureMap.keys {
+            var textures : [SKTexture] = []
+            for textureName in (stateToTextureMap[state]?.textureNames)! {
+                textures.append((stateToTextureMap[state]?.textureNamed(textureName))!)
+            }
+            frames[state] = textures
         }
-        self.key = key
         super.init()
     }
     
