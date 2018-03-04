@@ -23,6 +23,8 @@
 		4827237A204C626800B14B28 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272379204C626800B14B28 /* Player.swift */; };
 		4827237C204C6B3B00B14B28 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827237B204C6B3B00B14B28 /* EntityManager.swift */; };
 		48272380204C78F300B14B28 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827237F204C78F300B14B28 /* StateComponent.swift */; };
+		48272382204CA07F00B14B28 /* IdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272381204CA07F00B14B28 /* IdleState.swift */; };
+		48272384204CA0DC00B14B28 /* RotationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272383204CA0DC00B14B28 /* RotationState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		48272379204C626800B14B28 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4827237B204C6B3B00B14B28 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		4827237F204C78F300B14B28 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
+		48272381204CA07F00B14B28 /* IdleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleState.swift; sourceTree = "<group>"; };
+		48272383204CA0DC00B14B28 /* RotationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				48272379204C626800B14B28 /* Player.swift */,
+				48272381204CA07F00B14B28 /* IdleState.swift */,
+				48272383204CA0DC00B14B28 /* RotationState.swift */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -196,8 +202,10 @@
 				4827237A204C626800B14B28 /* Player.swift in Sources */,
 				48272376204C585B00B14B28 /* SpriteComponent.swift in Sources */,
 				48272358204C20DD00B14B28 /* GameViewController.swift in Sources */,
+				48272382204CA07F00B14B28 /* IdleState.swift in Sources */,
 				4827237C204C6B3B00B14B28 /* EntityManager.swift in Sources */,
 				48272350204C20DD00B14B28 /* AppDelegate.swift in Sources */,
+				48272384204CA0DC00B14B28 /* RotationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

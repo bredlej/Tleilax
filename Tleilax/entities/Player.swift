@@ -8,35 +8,25 @@
 
 import GameplayKit
 
-class IdleState : GKState {
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is RotationState.Type
-    }
-}
-
-class RotationState : GKState {
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is IdleState.Type
-    }
-}
-
 class Player: GKEntity {
 
     var stateAnimations : [GKState:SKTextureAtlas]?
     
-    init(_ atlasName: String) {
+    override init() {
         super.init()
-        let idleState = IdleState()
-        let rotationState = RotationState()
+        let idleState = IdleState(entity: self)
+        let rotationState = RotationState(entity: self)
         stateAnimations = [idleState: SKTextureAtlas(named: "shipAnim"),
                            rotationState: SKTextureAtlas(named: "shipRotation")]
         let idleAnimationComponent = AnimationComponent(stateToTextureMap: stateAnimations!)
         let spriteComponent = SpriteComponent(texture: (idleAnimationComponent.frames[idleState]?.first!)!)
         let stateComponent = StateComponent([idleState, rotationState])
         stateComponent.state?.enter(IdleState.self)
+        
         addComponent(idleAnimationComponent)
         addComponent(spriteComponent)
         addComponent(stateComponent)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

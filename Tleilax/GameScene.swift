@@ -15,74 +15,37 @@ class GameScene: SKScene {
     var entityManager: EntityManager!
     
     private var lastUpdateTime : TimeInterval = 0
-    private let player = Player("shipAnim")
+    private let player = Player()
     
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
         
         entityManager = EntityManager(scene: self)
-        
-        initPlayer(player)
         entityManager.add(player)
     }
-    
-    func initPlayer(_ player: Player) {
-        if let spriteComponent = player.component(ofType: SpriteComponent.self) {
-            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/2, y: spriteComponent.node.size.height/2)
-            if let animationComponent = player.component(ofType: AnimationComponent.self) {
-                if let stateComponent = player.component(ofType: StateComponent.self) {
-                    spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
-                                                                                     timePerFrame: 0.1,
-                                                                                     resize: false,
-                                                                                     restore: true)),
-                                             withKey: "idle")
-                }
-            }
-        }
-    }
-    
+
     func touchDown(atPoint pos : CGPoint) {
-        if let spriteComponent = player.component(ofType: SpriteComponent.self) {
-            if let stateComponent = player.component(ofType: StateComponent.self) {
-                if (stateComponent.state?.canEnterState(RotationState.self))! {
-                    stateComponent.state?.enter(RotationState.self)
-                    if let animationComponent = player.component(ofType: AnimationComponent.self) {
-                        spriteComponent.node.removeAllActions()
-                        spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
-                                                                                         timePerFrame: 0.1,
-                                                                                         resize: false,
-                                                                                         restore: true)),
-                                                 withKey: "rotation")
-                    }
-                }
+        if let stateComponent = player.component(ofType: StateComponent.self) {
+            if (stateComponent.state?.canEnterState(RotationState.self))! {
+                stateComponent.state?.enter(RotationState.self)
             }
         }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-
+        // movement actions
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let spriteComponent = player.component(ofType: SpriteComponent.self) {
-            if let animationComponent = player.component(ofType: AnimationComponent.self) {
-                if let stateComponent = player.component(ofType: StateComponent.self) {
-                    if (stateComponent.state?.canEnterState(IdleState.self))! {
-                        stateComponent.state?.enter(IdleState.self)
-                        spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
-                                                                                         timePerFrame: 0.1,
-                                                                                         resize: false,
-                                                                                         restore: true)),
-                                                 withKey: "idle")
-                    }
-                }
+        if let stateComponent = player.component(ofType: StateComponent.self) {
+            if (stateComponent.state?.canEnterState(IdleState.self))! {
+                stateComponent.state?.enter(IdleState.self)
             }
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
@@ -100,21 +63,16 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        // Initialize _lastUpdateTime if it has not already been
+
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
         
-        // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
-        // Update entities
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
         }
-
         
         self.lastUpdateTime = currentTime
     }
