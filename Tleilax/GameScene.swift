@@ -45,14 +45,16 @@ class GameScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         if let spriteComponent = player.component(ofType: SpriteComponent.self) {
             if let stateComponent = player.component(ofType: StateComponent.self) {
-                stateComponent.state?.enter(RotationState.self)
-                if let animationComponent = player.component(ofType: AnimationComponent.self) {
-                    spriteComponent.node.removeAllActions()
-                    spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
-                                                                                     timePerFrame: 0.1,
-                                                                                     resize: false,
-                                                                                     restore: true)),
-                                             withKey: "rotation")
+                if (stateComponent.state?.canEnterState(RotationState.self))! {
+                    stateComponent.state?.enter(RotationState.self)
+                    if let animationComponent = player.component(ofType: AnimationComponent.self) {
+                        spriteComponent.node.removeAllActions()
+                        spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
+                                                                                         timePerFrame: 0.1,
+                                                                                         resize: false,
+                                                                                         restore: true)),
+                                                 withKey: "rotation")
+                    }
                 }
             }
         }
@@ -66,12 +68,14 @@ class GameScene: SKScene {
         if let spriteComponent = player.component(ofType: SpriteComponent.self) {
             if let animationComponent = player.component(ofType: AnimationComponent.self) {
                 if let stateComponent = player.component(ofType: StateComponent.self) {
-                    stateComponent.state?.enter(IdleState.self)
-                    spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
-                                                                                     timePerFrame: 0.1,
-                                                                                     resize: false,
-                                                                                     restore: true)),
-                                             withKey: "idle")
+                    if (stateComponent.state?.canEnterState(IdleState.self))! {
+                        stateComponent.state?.enter(IdleState.self)
+                        spriteComponent.node.run(SKAction.repeatForever(SKAction.animate(with: animationComponent.frames[(stateComponent.state?.currentState)!]!,
+                                                                                         timePerFrame: 0.1,
+                                                                                         resize: false,
+                                                                                         restore: true)),
+                                                 withKey: "idle")
+                    }
                 }
             }
         }
