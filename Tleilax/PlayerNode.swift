@@ -49,8 +49,9 @@ class PlayerNode: SKSpriteNode {
                                                          resize: false,
                                                          restore: true)),
                  withKey: "rotatingShip")
+        
         var vector = CGVector()
-        vector.dx = left ? -10.0 : 10.0
+        vector.dx = left ? -20.0 : 20.0
         self.run(SKAction.repeatForever(SKAction.move(by: vector, duration: 0.1)))
     }
     
