@@ -25,6 +25,7 @@
 		48272380204C78F300B14B28 /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827237F204C78F300B14B28 /* StateComponent.swift */; };
 		48272382204CA07F00B14B28 /* IdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272381204CA07F00B14B28 /* IdleState.swift */; };
 		48272384204CA0DC00B14B28 /* RotationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272383204CA0DC00B14B28 /* RotationState.swift */; };
+		48272388204DC6B300B14B28 /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48272387204DC6B300B14B28 /* PlayerSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4827237F204C78F300B14B28 /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
 		48272381204CA07F00B14B28 /* IdleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleState.swift; sourceTree = "<group>"; };
 		48272383204CA0DC00B14B28 /* RotationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationState.swift; sourceTree = "<group>"; };
+		48272387204DC6B300B14B28 /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +82,6 @@
 		4827234E204C20DD00B14B28 /* Tleilax */ = {
 			isa = PBXGroup;
 			children = (
-				48272374204C57FC00B14B28 /* components */,
 				48272373204C57E700B14B28 /* entities */,
 				4827237B204C6B3B00B14B28 /* EntityManager.swift */,
 				48272355204C20DD00B14B28 /* GameScene.swift */,
@@ -102,7 +103,9 @@
 		48272373204C57E700B14B28 /* entities */ = {
 			isa = PBXGroup;
 			children = (
+				48272374204C57FC00B14B28 /* components */,
 				48272385204CA2BF00B14B28 /* states */,
+				48272386204DC0F700B14B28 /* systems */,
 				48272379204C626800B14B28 /* Player.swift */,
 			);
 			path = entities;
@@ -125,6 +128,14 @@
 				48272383204CA0DC00B14B28 /* RotationState.swift */,
 			);
 			path = states;
+			sourceTree = "<group>";
+		};
+		48272386204DC0F700B14B28 /* systems */ = {
+			isa = PBXGroup;
+			children = (
+				48272387204DC6B300B14B28 /* PlayerSystem.swift */,
+			);
+			path = systems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +218,7 @@
 				48272380204C78F300B14B28 /* StateComponent.swift in Sources */,
 				48272378204C5B3900B14B28 /* AnimationComponent.swift in Sources */,
 				48272356204C20DD00B14B28 /* GameScene.swift in Sources */,
+				48272388204DC6B300B14B28 /* PlayerSystem.swift in Sources */,
 				4827237A204C626800B14B28 /* Player.swift in Sources */,
 				48272376204C585B00B14B28 /* SpriteComponent.swift in Sources */,
 				48272358204C20DD00B14B28 /* GameViewController.swift in Sources */,
