@@ -20,17 +20,17 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
-        let player = Player()
+        
+        playerSystem = PlayerSystem(scene: self)
+        playerSystem.idle()
+        playerSystem.resetAnimation()
         
         entityManager = EntityManager(scene: self)
-        entityManager.add(player)
-        
-        playerSystem = PlayerSystem(scene: self, player: player)
-        playerSystem.idle()
+        entityManager.add(playerSystem.getPlayer())
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        playerSystem.rotate()
+        playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
     }
     
     func touchMoved(toPoint pos : CGPoint) {

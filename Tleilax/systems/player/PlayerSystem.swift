@@ -12,17 +12,27 @@ import GameplayKit
 class PlayerSystem: NSObject {
 
     let scene: SKScene
-    let player: Player
+    private let player: Player
     
-    init(scene: SKScene, player: Player) {
+    init(scene: SKScene) {
+
         self.scene = scene
-        self.player = player
+        self.player = Player()
+        if let stateComponent = player.component(ofType: StateComponent.self) {
+            stateComponent.state?.enter(IdleState.self)
+        }
     }
     
-    func rotate() {
+    func getPlayer() -> Player {
+        return player
+    }
+    
+    func rotate(isLeftDirection: Bool) {
         if let stateComponent = player.component(ofType: StateComponent.self),
+            let spriteComponent = player.component(ofType: SpriteComponent.self),
             (stateComponent.state?.canEnterState(RotationState.self))!
         {
+            spriteComponent.node.xScale = isLeftDirection ? 1.0 : -1.0
             stateComponent.state?.enter(RotationState.self)
             resetAnimation()
         }

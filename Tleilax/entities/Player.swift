@@ -15,16 +15,12 @@ class Player: GKEntity {
         
         let idleState = IdleState(entity: self)
         let rotationState = RotationState(entity: self)
-        let stateComponent = StateComponent([idleState, rotationState])
-        let idleAnimationComponent = AnimationComponent(stateToTextureMap: [idleState: SKTextureAtlas(named: "shipAnim"),
-                                                                            rotationState: SKTextureAtlas(named: "shipRotation")])
-        let spriteComponent = SpriteComponent(texture: (idleAnimationComponent.frames[idleState]?.first!)!)
-        
-        stateComponent.state?.enter(IdleState.self)
-    
-        addComponent(idleAnimationComponent)
-        addComponent(spriteComponent)
-        addComponent(stateComponent)
+        addComponent(SpriteComponent(texture: SKTexture(imageNamed: "shipAnim.atlas/ship1.png")))
+        addComponent(StateComponent([idleState, rotationState]))
+        addComponent(DirectionComponent(direction: CGVector(dx: 0.0, dy: 0.0)))
+        addComponent(VelocityComponent(velocity: 0.0))
+        addComponent(AnimationComponent(stateToTextureMap: [idleState: SKTextureAtlas(named: "shipAnim"),
+                                                            rotationState: SKTextureAtlas(named: "shipRotation")]))
         
     }
     
