@@ -11,34 +11,41 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+    var entityManager: EntityManager!
     
     private var lastUpdateTime : TimeInterval = 0
-    private var playerNode : PlayerNode?
+    private let player = Player()
     
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
-        self.playerNode = self.childNode(withName: "Player") as? PlayerNode
-        self.playerNode?.initialSetup()
+        
+        entityManager = EntityManager(scene: self)
+        entityManager.add(player)
     }
-    
-    
+
     func touchDown(atPoint pos : CGPoint) {
-        self.playerNode?.touchDown(atPoint: pos)
+        if let stateComponent = player.component(ofType: StateComponent.self),
+            (stateComponent.state?.canEnterState(RotationState.self))!
+        {
+            stateComponent.state?.enter(RotationState.self)
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        self.playerNode?.touchMoved(toPoint: pos)
+        // movement actions
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        self.playerNode?.touchUp(atPoint: pos)
+        if let stateComponent = player.component(ofType: StateComponent.self),
+            (stateComponent.state?.canEnterState(IdleState.self))!
+        {
+            stateComponent.state?.enter(IdleState.self)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
@@ -56,21 +63,16 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
-        // Initialize _lastUpdateTime if it has not already been
+
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
         
-        // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
-        // Update entities
-        for entity in self.entities {
+        for entity in entityManager.entities {
             entity.update(deltaTime: dt)
         }
-
         
         self.lastUpdateTime = currentTime
     }
