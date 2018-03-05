@@ -13,24 +13,24 @@ class GameScene: SKScene {
     
     var graphs = [String : GKGraph]()
     var entityManager: EntityManager!
+    var playerSystem: PlayerSystem!
     
     private var lastUpdateTime : TimeInterval = 0
-    private let player = Player()
     
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
         
+        playerSystem = PlayerSystem(scene: self)
+        playerSystem.idle()
+        playerSystem.resetAnimation()
+        
         entityManager = EntityManager(scene: self)
-        entityManager.add(player)
+        entityManager.add(playerSystem.getPlayer())
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        if let stateComponent = player.component(ofType: StateComponent.self),
-            (stateComponent.state?.canEnterState(RotationState.self))!
-        {
-            stateComponent.state?.enter(RotationState.self)
-        }
+        playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -38,11 +38,7 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let stateComponent = player.component(ofType: StateComponent.self),
-            (stateComponent.state?.canEnterState(IdleState.self))!
-        {
-            stateComponent.state?.enter(IdleState.self)
-        }
+        playerSystem.idle()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
