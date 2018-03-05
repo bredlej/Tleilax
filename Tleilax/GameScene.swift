@@ -26,10 +26,10 @@ class GameScene: SKScene {
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        if let stateComponent = player.component(ofType: StateComponent.self) {
-            if (stateComponent.state?.canEnterState(RotationState.self))! {
-                stateComponent.state?.enter(RotationState.self)
-            }
+        if let stateComponent = player.component(ofType: StateComponent.self),
+            (stateComponent.state?.canEnterState(RotationState.self))!
+        {
+            stateComponent.state?.enter(RotationState.self)
         }
     }
     
@@ -38,10 +38,10 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let stateComponent = player.component(ofType: StateComponent.self) {
-            if (stateComponent.state?.canEnterState(IdleState.self))! {
-                stateComponent.state?.enter(IdleState.self)
-            }
+        if let stateComponent = player.component(ofType: StateComponent.self),
+            (stateComponent.state?.canEnterState(IdleState.self))!
+        {
+            stateComponent.state?.enter(IdleState.self)
         }
     }
     

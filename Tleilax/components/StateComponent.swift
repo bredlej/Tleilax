@@ -14,7 +14,6 @@ class StateComponent: GKComponent {
     
     init (_ states: [GKState]) {
         state = GKStateMachine(states: states)
-        
         super.init()
     }
     

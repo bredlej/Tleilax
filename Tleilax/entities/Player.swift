@@ -10,19 +10,18 @@ import GameplayKit
 
 class Player: GKEntity {
 
-    var stateAnimations : [GKState:SKTextureAtlas]?
-    
     override init() {
         super.init()
+        
         let idleState = IdleState(entity: self)
         let rotationState = RotationState(entity: self)
-        stateAnimations = [idleState: SKTextureAtlas(named: "shipAnim"),
-                           rotationState: SKTextureAtlas(named: "shipRotation")]
-        let idleAnimationComponent = AnimationComponent(stateToTextureMap: stateAnimations!)
-        let spriteComponent = SpriteComponent(texture: (idleAnimationComponent.frames[idleState]?.first!)!)
         let stateComponent = StateComponent([idleState, rotationState])
-        stateComponent.state?.enter(IdleState.self)
+        let idleAnimationComponent = AnimationComponent(stateToTextureMap: [idleState: SKTextureAtlas(named: "shipAnim"),
+                                                                            rotationState: SKTextureAtlas(named: "shipRotation")])
+        let spriteComponent = SpriteComponent(texture: (idleAnimationComponent.frames[idleState]?.first!)!)
         
+        stateComponent.state?.enter(IdleState.self)
+    
         addComponent(idleAnimationComponent)
         addComponent(spriteComponent)
         addComponent(stateComponent)
