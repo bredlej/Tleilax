@@ -25,7 +25,7 @@ class GameScene: SKScene {
         entityManager = EntityManager(scene: self)
         entityManager.add(player)
         
-        playerSystem = PlayerSystem(scene: self, player: Player())
+        playerSystem = PlayerSystem(scene: self, player: player)
         playerSystem.idle()
     }
 
