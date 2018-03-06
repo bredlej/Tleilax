@@ -1,32 +1,33 @@
 //
-//  VelocityComponent.swift
+//  LocalPositionComponent.swift
 //  Tleilax
 //
-//  Created by Patryk Szczypień on 05.03.2018.
+//  Created by Patryk Szczypień on 06.03.2018.
 //  Copyright © 2018 Patryk Szczypień. All rights reserved.
 //
 
 import GameplayKit
 
-class VelocityComponent: GKComponent {
+class LocalPositionComponent: GKComponent {
 
-    private var _velocity: CGFloat
+    private var _position : CGPoint
     
-    var velocity: CGFloat? {
+    var position: CGPoint? {
         set {
-            _velocity = (newValue)!
+            _position = (newValue)!
         }
         get {
-            return _velocity
+            return _position
         }
     }
     
-    init(velocity: CGFloat) {
-        _velocity = velocity
+    init(position: CGPoint) {
+        _position = position
         super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }

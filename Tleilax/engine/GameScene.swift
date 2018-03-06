@@ -68,6 +68,7 @@ class GameScene: SKScene {
         
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
+            playerSystem.update(deltaTime: dt)
         }
         
         self.lastUpdateTime = currentTime

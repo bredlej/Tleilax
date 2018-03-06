@@ -9,18 +9,19 @@
 import SpriteKit
 import GameplayKit
 
-class PlayerSystem: NSObject {
+class PlayerSystem{
 
     let scene: SKScene
     private let player: Player
     
     init(scene: SKScene) {
-
         self.scene = scene
         self.player = Player()
         if let stateComponent = player.component(ofType: StateComponent.self) {
             stateComponent.state?.enter(IdleState.self)
         }
+        idle()
+        resetAnimation()
     }
     
     func getPlayer() -> Player {
@@ -30,9 +31,13 @@ class PlayerSystem: NSObject {
     func rotate(isLeftDirection: Bool) {
         if let stateComponent = player.component(ofType: StateComponent.self),
             let spriteComponent = player.component(ofType: SpriteComponent.self),
+            let directionComponent = player.component(ofType: DirectionComponent.self),
+            let velocityComponent = player.component(ofType: VelocityComponent.self),
             (stateComponent.state?.canEnterState(RotationState.self))!
         {
             spriteComponent.node.xScale = isLeftDirection ? 1.0 : -1.0
+            directionComponent.direction?.dx = isLeftDirection ? -1.0 : 1.0
+            velocityComponent.velocity = 1.0
             stateComponent.state?.enter(RotationState.self)
             resetAnimation()
         }
@@ -40,8 +45,12 @@ class PlayerSystem: NSObject {
     
     func idle() {
         if let stateComponent = player.component(ofType: StateComponent.self),
+            let velocityComponent = player.component(ofType: VelocityComponent.self),
+            let directionComponent = player.component(ofType: DirectionComponent.self),
             (stateComponent.state?.canEnterState(IdleState.self))!
         {
+            velocityComponent.velocity = 0.0
+            directionComponent.direction?.dx = 0.0
             stateComponent.state?.enter(IdleState.self)
             resetAnimation()
         }
@@ -58,6 +67,18 @@ class PlayerSystem: NSObject {
                                                                              resize: false,
                                                                              restore: true)),
                                      withKey: "idle")
+        }
+    }
+    
+    func update(deltaTime: TimeInterval) {
+        player.update(deltaTime: deltaTime)
+        if let directionComponent = player.component(ofType: DirectionComponent.self),
+            let velocityComponent = player.component(ofType: VelocityComponent.self),
+            let spriteComponent = player.component(ofType: SpriteComponent.self)
+        {
+            
+            spriteComponent.node.position.x += velocityComponent.velocity!+(directionComponent.direction?.dx)!
+            spriteComponent.node.position.y += velocityComponent.velocity!+(directionComponent.direction?.dy)!
         }
     }
 }
