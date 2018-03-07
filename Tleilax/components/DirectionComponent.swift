@@ -11,6 +11,7 @@ import GameplayKit
 class DirectionComponent: GKComponent {
 
     private var _direction : CGVector
+    
     var direction : CGVector? {
         set
         {

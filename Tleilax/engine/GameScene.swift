@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     var entityManager: EntityManager!
     var playerSystem: PlayerSystem!
+    var touchSystem: TouchSystem!
     
     private var lastUpdateTime : TimeInterval = 0
     
@@ -27,18 +28,22 @@ class GameScene: SKScene {
         
         entityManager = EntityManager(scene: self)
         entityManager.add(playerSystem.getPlayer())
+        
+        touchSystem = TouchSystem(scene: self, entityManager: entityManager)
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
+        //playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
+        touchSystem.touchPressed(position: pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        // movement actions
+        touchSystem.touchMoved(toPoint: pos)
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        playerSystem.idle()
+        //playerSystem.idle()
+        touchSystem.touchReleased(position: pos)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -68,6 +73,7 @@ class GameScene: SKScene {
         
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
+            playerSystem.update(deltaTime: dt)
         }
         
         self.lastUpdateTime = currentTime
