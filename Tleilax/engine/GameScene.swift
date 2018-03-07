@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     var entityManager: EntityManager!
     var playerSystem: PlayerSystem!
+    var touchSystem: TouchSystem!
     
     private var lastUpdateTime : TimeInterval = 0
     
@@ -27,6 +28,8 @@ class GameScene: SKScene {
         
         entityManager = EntityManager(scene: self)
         entityManager.add(playerSystem.getPlayer())
+        
+        touchSystem = TouchSystem(scene: self, entityManager: entityManager)
     }
 
     func touchDown(atPoint pos : CGPoint) {

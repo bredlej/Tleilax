@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class PlayerSystem{
+class PlayerSystem {
 
     let scene: SKScene
     private let player: Player

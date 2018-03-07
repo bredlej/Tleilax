@@ -12,7 +12,6 @@ class Player: GKEntity {
 
     override init() {
         super.init()
-        
         let idleState = IdleState(entity: self)
         let rotationState = RotationState(entity: self)
         addComponent(SpriteComponent(texture: SKTexture(imageNamed: "shipAnim.atlas/ship1.png")))
