@@ -11,6 +11,6 @@ import GameplayKit
 class TouchMoved: GKState {
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is TouchPressed.Type || stateClass is TouchReleased.Type
+        return stateClass is TouchPressed.Type || stateClass is TouchMoved.Type || stateClass is TouchReleased.Type
     }
 }

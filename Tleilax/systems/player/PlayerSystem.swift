@@ -8,11 +8,13 @@
 
 import SpriteKit
 import GameplayKit
+import Foundation
 
 class PlayerSystem {
 
     let scene: SKScene
     private let player: Player
+    private let nc = NotificationCenter.default
     
     init(scene: SKScene) {
         self.scene = scene
@@ -22,6 +24,11 @@ class PlayerSystem {
         }
         idle()
         resetAnimation()
+        
+        // listen to events from TouchSystem
+        nc.addObserver(self, selector: #selector(self.touchPressed(notification:)), name: .touchPressed, object: nil)
+        nc.addObserver(self, selector: #selector(self.touchMoved(notification:)), name: .touchMoved, object: nil)
+        nc.addObserver(self, selector: #selector(self.touchReleased(notification:)), name: .touchReleased, object: nil)
     }
     
     func getPlayer() -> Player {
@@ -72,13 +79,25 @@ class PlayerSystem {
     
     func update(deltaTime: TimeInterval) {
         player.update(deltaTime: deltaTime)
-        if let directionComponent = player.component(ofType: DirectionComponent.self),
-            let velocityComponent = player.component(ofType: VelocityComponent.self),
+    }
+    
+    @objc func touchPressed(notification: NSNotification) {
+        if let touchPosition = notification.userInfo!["position"] as? CGPoint,
             let spriteComponent = player.component(ofType: SpriteComponent.self)
         {
-            
-            spriteComponent.node.position.x += velocityComponent.velocity!+(directionComponent.direction?.dx)!
-            spriteComponent.node.position.y += velocityComponent.velocity!+(directionComponent.direction?.dy)!
+            spriteComponent.node.position = touchPosition
         }
+    }
+    
+    @objc func touchMoved(notification: NSNotification) {
+        if let touchPosition = notification.userInfo!["position"] as? CGPoint,
+            let spriteComponent = player.component(ofType: SpriteComponent.self)
+        {
+            spriteComponent.node.position = touchPosition
+        }
+    }
+    
+    @objc func touchReleased(notification: NSNotification) {
+        // empty for now
     }
 }
