@@ -33,7 +33,6 @@ class GameScene: SKScene {
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        //playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
         touchSystem.touchPressed(position: pos)
     }
     
@@ -42,7 +41,6 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        //playerSystem.idle()
         touchSystem.touchReleased(position: pos)
     }
     
@@ -73,8 +71,9 @@ class GameScene: SKScene {
         
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
-            playerSystem.update(deltaTime: dt)
         }
+        
+        playerSystem.update(deltaTime: dt)
         
         self.lastUpdateTime = currentTime
     }

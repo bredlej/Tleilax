@@ -78,7 +78,7 @@ class PlayerSystem {
     }
     
     func update(deltaTime: TimeInterval) {
-        player.update(deltaTime: deltaTime)
+        // nothing yet
     }
     
     @objc func touchPressed(notification: NSNotification) {
