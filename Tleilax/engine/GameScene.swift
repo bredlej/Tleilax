@@ -33,7 +33,8 @@ class GameScene: SKScene {
     }
 
     func touchDown(atPoint pos : CGPoint) {
-        playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
+        //playerSystem.rotate(isLeftDirection: pos.x < (playerSystem.getPlayer().component(ofType: SpriteComponent.self)?.node.position.x)! ? true : false)
+        touchSystem.touchPressed(position: pos)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -41,7 +42,8 @@ class GameScene: SKScene {
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        playerSystem.idle()
+        //playerSystem.idle()
+        touchSystem.touchReleased(position: pos)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

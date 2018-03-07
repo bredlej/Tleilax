@@ -38,11 +38,9 @@ class TouchSystem {
             (stateComponent.state?.canEnterState(TouchPressed.self))!
         {
             entityManager.add(touch)
-            let touchNode = SKNode()
-            touchNode.position = position
-            touchNode.name = "TouchNode"
             _position = position
             stateComponent.state?.enter(TouchPressed.self)
+            print("Entering touch at \(position)")
         }
     }
     
@@ -53,6 +51,7 @@ class TouchSystem {
             entityManager.remove(touch)
             _position = position
             stateComponent.state?.enter(TouchReleased.self)
+            print("Leaving touch at \(position)")
         }
     }
 }
