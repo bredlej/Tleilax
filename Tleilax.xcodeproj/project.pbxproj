@@ -37,6 +37,7 @@
 		4838192F2050A800000F4E4A /* EmitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838192E2050A800000F4E4A /* EmitState.swift */; };
 		483819322050A8F3000F4E4A /* StopEmitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819312050A8F3000F4E4A /* StopEmitState.swift */; };
 		483819342050BC0F000F4E4A /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819332050BC0F000F4E4A /* Bullet.swift */; };
+		483819362051DFE2000F4E4A /* EmitterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819352051DFE2000F4E4A /* EmitterComponent.swift */; };
 		4861426E204DFA5C00B64D76 /* shipAnim.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426D204DFA5C00B64D76 /* shipAnim.atlas */; };
 		48614270204DFA6900B64D76 /* shipRotation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426F204DFA6900B64D76 /* shipRotation.atlas */; };
 		4861427A204E04B900B64D76 /* LocalPositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48614279204E04B900B64D76 /* LocalPositionComponent.swift */; };
@@ -75,6 +76,7 @@
 		4838192E2050A800000F4E4A /* EmitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitState.swift; sourceTree = "<group>"; };
 		483819312050A8F3000F4E4A /* StopEmitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEmitState.swift; sourceTree = "<group>"; };
 		483819332050BC0F000F4E4A /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		483819352051DFE2000F4E4A /* EmitterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterComponent.swift; sourceTree = "<group>"; };
 		4861426D204DFA5C00B64D76 /* shipAnim.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipAnim.atlas; sourceTree = "<group>"; };
 		4861426F204DFA6900B64D76 /* shipRotation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipRotation.atlas; sourceTree = "<group>"; };
 		48614279204E04B900B64D76 /* LocalPositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPositionComponent.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				48272390204DE48100B14B28 /* VelocityComponent.swift */,
 				48614279204E04B900B64D76 /* LocalPositionComponent.swift */,
 				4838192920509E12000F4E4A /* BirthRateComponent.swift */,
+				483819352051DFE2000F4E4A /* EmitterComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				48272350204C20DD00B14B28 /* AppDelegate.swift in Sources */,
 				48272384204CA0DC00B14B28 /* RotationState.swift in Sources */,
 				483819322050A8F3000F4E4A /* StopEmitState.swift in Sources */,
+				483819362051DFE2000F4E4A /* EmitterComponent.swift in Sources */,
 				4838191E204F4366000F4E4A /* TouchMoved.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,4 +6,15 @@
 //  Copyright © 2018 Patryk Szczypień. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
+import SpriteKit
+
+extension Notification.Name {
+    static let emit = Notification.Name("emit")
+}
+class EmitterSystem: GKComponentSystem<EmitterComponent> {
+    
+    override init() {
+        super.init()
+    }
+}

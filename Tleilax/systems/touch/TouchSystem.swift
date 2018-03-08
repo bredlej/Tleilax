@@ -59,7 +59,7 @@ class TouchSystem {
             stateComponent.state?.enter(TouchMoved.self)
             
             // broadcast touch position to Notification Center
-            nc.post(name: .touchMoved, object: position, userInfo: ["position" : position])
+            nc.post(name: .touchMoved, object: nil, userInfo: ["position" : position])
         }
     }
     
@@ -72,7 +72,7 @@ class TouchSystem {
             stateComponent.state?.enter(TouchReleased.self)
             
             // broadcast touch position to Notification Center
-            nc.post(name: .touchReleased, object: position, userInfo: ["position" : position])
+            nc.post(name: .touchReleased, object: nil, userInfo: ["position" : position])
         }
     }
 }

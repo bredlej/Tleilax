@@ -93,33 +93,7 @@ class PlayerSystem {
     }
     
     func update(deltaTime: TimeInterval) {
-        /*
-        timeSinceLastShoot += deltaTime
-        if let birthRateComponent = weapon.component(ofType: BirthRateComponent.self),
-            let weaponStateComponent = weapon.component(ofType: StateComponent.self),
-            let weaponSpriteComponent = weapon.component(ofType: SpriteComponent.self),
-            weaponStateComponent.state?.currentState is EmitState,
-            timeSinceLastShoot.isLess(than: Double( 60 / birthRateComponent.birthRate!))
-        {
-            let bullet = Bullet()
-            if let bulletSpriteComponent = bullet.component(ofType: SpriteComponent.self) {
-                bulletSpriteComponent.node.position = weaponSpriteComponent.node.position
-                
-            }
-            entityManager.add(bullet)
-        }
-        
-        for entity in entityManager.entities {
-            if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
-                if spriteComponent.node.position.y > 1400.0 {
-                    entityManager.remove(entity)
-                }
-                else {
-                    spriteComponent.node.position.y += CGFloat(50 * deltaTime)
-                }
-            }
-        }
- */
+
     }
     
     @objc func touchPressed(notification: NSNotification) {
@@ -129,7 +103,6 @@ class PlayerSystem {
             let weaponSpriteComponent = weapon.component(ofType: SpriteComponent.self)
         {
             spriteComponent.node.position = touchPosition
-            spriteComponent.node.position.x -= 65.0
             spriteComponent.node.position.y += 175.0
 
             if (weaponStateComponent.state?.canEnterState(EmitState.self))! {
@@ -147,7 +120,6 @@ class PlayerSystem {
             let weaponSpriteComponent = weapon.component(ofType: SpriteComponent.self)
         {
             spriteComponent.node.position = touchPosition
-            spriteComponent.node.position.x -= 65.0
             spriteComponent.node.position.y += 175.0
             weaponSpriteComponent.node.position = spriteComponent.node.position
             weaponSpriteComponent.node.position.y += 20.0 + spriteComponent.node.size.height / 2.0
