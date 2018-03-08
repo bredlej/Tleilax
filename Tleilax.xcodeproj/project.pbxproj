@@ -31,6 +31,12 @@
 		4838191E204F4366000F4E4A /* TouchMoved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838191D204F4366000F4E4A /* TouchMoved.swift */; };
 		48381920204F437F000F4E4A /* TouchReleased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838191F204F437F000F4E4A /* TouchReleased.swift */; };
 		48381922204F45B1000F4E4A /* TouchSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48381921204F45B1000F4E4A /* TouchSystem.swift */; };
+		4838192820509D1B000F4E4A /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838192720509D1B000F4E4A /* Emitter.swift */; };
+		4838192A20509E12000F4E4A /* BirthRateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838192920509E12000F4E4A /* BirthRateComponent.swift */; };
+		4838192C2050A104000F4E4A /* EmitterSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838192B2050A104000F4E4A /* EmitterSystem.swift */; };
+		4838192F2050A800000F4E4A /* EmitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838192E2050A800000F4E4A /* EmitState.swift */; };
+		483819322050A8F3000F4E4A /* StopEmitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819312050A8F3000F4E4A /* StopEmitState.swift */; };
+		483819342050BC0F000F4E4A /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819332050BC0F000F4E4A /* Bullet.swift */; };
 		4861426E204DFA5C00B64D76 /* shipAnim.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426D204DFA5C00B64D76 /* shipAnim.atlas */; };
 		48614270204DFA6900B64D76 /* shipRotation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426F204DFA6900B64D76 /* shipRotation.atlas */; };
 		4861427A204E04B900B64D76 /* LocalPositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48614279204E04B900B64D76 /* LocalPositionComponent.swift */; };
@@ -63,6 +69,12 @@
 		4838191D204F4366000F4E4A /* TouchMoved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchMoved.swift; sourceTree = "<group>"; };
 		4838191F204F437F000F4E4A /* TouchReleased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchReleased.swift; sourceTree = "<group>"; };
 		48381921204F45B1000F4E4A /* TouchSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchSystem.swift; sourceTree = "<group>"; };
+		4838192720509D1B000F4E4A /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		4838192920509E12000F4E4A /* BirthRateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthRateComponent.swift; sourceTree = "<group>"; };
+		4838192B2050A104000F4E4A /* EmitterSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterSystem.swift; sourceTree = "<group>"; };
+		4838192E2050A800000F4E4A /* EmitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitState.swift; sourceTree = "<group>"; };
+		483819312050A8F3000F4E4A /* StopEmitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEmitState.swift; sourceTree = "<group>"; };
+		483819332050BC0F000F4E4A /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		4861426D204DFA5C00B64D76 /* shipAnim.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipAnim.atlas; sourceTree = "<group>"; };
 		4861426F204DFA6900B64D76 /* shipRotation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipRotation.atlas; sourceTree = "<group>"; };
 		48614279204E04B900B64D76 /* LocalPositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPositionComponent.swift; sourceTree = "<group>"; };
@@ -117,6 +129,8 @@
 			children = (
 				48272379204C626800B14B28 /* Player.swift */,
 				48381917204F41D9000F4E4A /* Touch.swift */,
+				4838192720509D1B000F4E4A /* Emitter.swift */,
+				483819332050BC0F000F4E4A /* Bullet.swift */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -131,6 +145,7 @@
 				4827238C204DDB6900B14B28 /* DirectionComponent.swift */,
 				48272390204DE48100B14B28 /* VelocityComponent.swift */,
 				48614279204E04B900B64D76 /* LocalPositionComponent.swift */,
+				4838192920509E12000F4E4A /* BirthRateComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -147,8 +162,8 @@
 		48272386204DC0F700B14B28 /* systems */ = {
 			isa = PBXGroup;
 			children = (
+				4838192D2050A6AB000F4E4A /* emitter */,
 				48381919204F42D0000F4E4A /* touch */,
-				48381921204F45B1000F4E4A /* TouchSystem.swift */,
 				48272389204DD78000B14B28 /* player */,
 			);
 			path = systems;
@@ -187,6 +202,7 @@
 		48381919204F42D0000F4E4A /* touch */ = {
 			isa = PBXGroup;
 			children = (
+				48381921204F45B1000F4E4A /* TouchSystem.swift */,
 				4838191A204F42DA000F4E4A /* states */,
 			);
 			path = touch;
@@ -198,6 +214,24 @@
 				4838191B204F42F3000F4E4A /* TouchPressed.swift */,
 				4838191D204F4366000F4E4A /* TouchMoved.swift */,
 				4838191F204F437F000F4E4A /* TouchReleased.swift */,
+			);
+			path = states;
+			sourceTree = "<group>";
+		};
+		4838192D2050A6AB000F4E4A /* emitter */ = {
+			isa = PBXGroup;
+			children = (
+				483819302050A852000F4E4A /* states */,
+				4838192B2050A104000F4E4A /* EmitterSystem.swift */,
+			);
+			path = emitter;
+			sourceTree = "<group>";
+		};
+		483819302050A852000F4E4A /* states */ = {
+			isa = PBXGroup;
+			children = (
+				4838192E2050A800000F4E4A /* EmitState.swift */,
+				483819312050A8F3000F4E4A /* StopEmitState.swift */,
 			);
 			path = states;
 			sourceTree = "<group>";
@@ -278,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4838192C2050A104000F4E4A /* EmitterSystem.swift in Sources */,
 				48381922204F45B1000F4E4A /* TouchSystem.swift in Sources */,
 				4827238F204DE3A800B14B28 /* NodeComponent.swift in Sources */,
 				48272380204C78F300B14B28 /* StateComponent.swift in Sources */,
@@ -286,17 +321,22 @@
 				48272378204C5B3900B14B28 /* AnimationComponent.swift in Sources */,
 				48272356204C20DD00B14B28 /* GameScene.swift in Sources */,
 				48272388204DC6B300B14B28 /* PlayerSystem.swift in Sources */,
+				4838192820509D1B000F4E4A /* Emitter.swift in Sources */,
 				4827237A204C626800B14B28 /* Player.swift in Sources */,
 				48272391204DE48100B14B28 /* VelocityComponent.swift in Sources */,
 				48272376204C585B00B14B28 /* SpriteComponent.swift in Sources */,
 				48381918204F41D9000F4E4A /* Touch.swift in Sources */,
+				4838192A20509E12000F4E4A /* BirthRateComponent.swift in Sources */,
+				483819342050BC0F000F4E4A /* Bullet.swift in Sources */,
 				48272358204C20DD00B14B28 /* GameViewController.swift in Sources */,
 				48381920204F437F000F4E4A /* TouchReleased.swift in Sources */,
 				4827238D204DDB6900B14B28 /* DirectionComponent.swift in Sources */,
+				4838192F2050A800000F4E4A /* EmitState.swift in Sources */,
 				48272382204CA07F00B14B28 /* IdleState.swift in Sources */,
 				4827237C204C6B3B00B14B28 /* EntityManager.swift in Sources */,
 				48272350204C20DD00B14B28 /* AppDelegate.swift in Sources */,
 				48272384204CA0DC00B14B28 /* RotationState.swift in Sources */,
+				483819322050A8F3000F4E4A /* StopEmitState.swift in Sources */,
 				4838191E204F4366000F4E4A /* TouchMoved.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

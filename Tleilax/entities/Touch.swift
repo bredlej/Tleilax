@@ -14,7 +14,7 @@ class Touch: GKEntity {
     override init() {
         super.init()
         addComponent(NodeComponent())
-        addComponent(DirectionComponent(direction: CGVector(dx: 0.0, dy: 0.0)))
+        addComponent(DirectionComponent(direction: CGPoint(x: 0.0, y: 0.0)))
         addComponent(StateComponent([TouchPressed(), TouchMoved(), TouchReleased()]))
     }
     

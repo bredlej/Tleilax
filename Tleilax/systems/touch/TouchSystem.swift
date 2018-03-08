@@ -17,7 +17,6 @@ extension Notification.Name {
 }
 class TouchSystem {
 
-    let scene: SKScene
     let entityManager: EntityManager
 
     private let touch: Touch
@@ -33,8 +32,7 @@ class TouchSystem {
         }
     }
     
-    init(scene: SKScene, entityManager: EntityManager) {
-        self.scene = scene
+    init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.touch = Touch()
         _position = CGPoint(x: 0.0, y: 0.0)
@@ -74,7 +72,7 @@ class TouchSystem {
             stateComponent.state?.enter(TouchReleased.self)
             
             // broadcast touch position to Notification Center
-            nc.post(name: .touchMoved, object: position, userInfo: ["position" : position])
+            nc.post(name: .touchReleased, object: position, userInfo: ["position" : position])
         }
     }
 }

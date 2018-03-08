@@ -21,15 +21,12 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
-        
-        playerSystem = PlayerSystem(scene: self)
+        entityManager = EntityManager(scene: self)
+        playerSystem = PlayerSystem(scene: self, entityManager: entityManager)
         playerSystem.idle()
         playerSystem.resetAnimation()
-        
-        entityManager = EntityManager(scene: self)
-        entityManager.add(playerSystem.getPlayer())
-        
-        touchSystem = TouchSystem(scene: self, entityManager: entityManager)
+        touchSystem = TouchSystem(entityManager: entityManager)
+        print("Create scene \(self.size)")
     }
 
     func touchDown(atPoint pos : CGPoint) {

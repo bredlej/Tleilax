@@ -12,16 +12,16 @@ class Player: GKEntity {
 
     override init() {
         super.init()
-        let idleState = IdleState(entity: self)
-        let rotationState = RotationState(entity: self)
+        let idleState = IdleState()
+        let rotationState = RotationState()
         addComponent(SpriteComponent(texture: SKTexture(imageNamed: "shipAnim.atlas/ship1.png")))
         addComponent(StateComponent([idleState, rotationState]))
-        addComponent(DirectionComponent(direction: CGVector(dx: 0.0, dy: 0.0)))
+        addComponent(DirectionComponent(direction: CGPoint(x: 0.0, y: 0.0)))
         addComponent(VelocityComponent(velocity: 0.0))
         addComponent(AnimationComponent(stateToTextureMap: [idleState: SKTextureAtlas(named: "shipAnim"),
                                                             rotationState: SKTextureAtlas(named: "shipRotation")]))
         addComponent(LocalPositionComponent(position: CGPoint(x: 0.0, y: 0.0)))
-        addComponent(DirectionComponent(direction: CGVector(dx: 0.0, dy: 0.0)))
+        addComponent(DirectionComponent(direction: CGPoint(x: 0.0, y: 0.0)))
         addComponent(VelocityComponent(velocity: 0.0))
     }
     
