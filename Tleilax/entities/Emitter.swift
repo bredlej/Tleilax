@@ -10,12 +10,13 @@ import GameplayKit
 
 class Emitter : GKEntity {
    
-    init(birthRatePerSecond: Int, texture: String) {
+    init(birthRatePerSecond: Double, texture: String) {
         super.init()
         addComponent(BirthRateComponent(birthRate: birthRatePerSecond))
         addComponent(DirectionComponent(direction: CGPoint(x: 0.0, y: 1.0)))
         addComponent(SpriteComponent(texture: SKTexture(imageNamed: texture)))
         addComponent(StateComponent([EmitState(), StopEmitState()]))
+        addComponent(EmitterComponent(id: 1, birthRate: birthRatePerSecond))
     }
     
     required init?(coder aDecoder: NSCoder) {

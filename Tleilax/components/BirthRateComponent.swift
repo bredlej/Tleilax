@@ -10,9 +10,9 @@ import GameplayKit
 
 class BirthRateComponent : GKComponent {
     
-    private var _birthRate: Int
+    private var _birthRate: Double
     
-    var birthRate : Int? {
+    var birthRate : Double? {
         set {
             _birthRate = (newValue)!
         }
@@ -21,7 +21,7 @@ class BirthRateComponent : GKComponent {
         }
     }
     
-    init(birthRate: Int) {
+    init(birthRate: Double) {
         _birthRate = birthRate
         super.init()
     }

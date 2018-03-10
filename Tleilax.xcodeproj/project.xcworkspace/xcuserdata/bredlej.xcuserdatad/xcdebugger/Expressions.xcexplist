@@ -3,15 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PlayerSystem.emit(notification:):PlayerSystem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EmitterComponent.update(deltaTime:):EmitterComponent.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayerSystem.touchPressed(notification:):PlayerSystem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.update(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spriteComponent.node.position.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GameScene.sceneDidLoad():GameScene.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.children()">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "GameScene.update(_:):GameScene.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

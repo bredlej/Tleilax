@@ -11,7 +11,7 @@ import GameplayKit
 class EmitterComponent: GKComponent {
  
     private var _id: Int
-    private var _birthRate : TimeInterval
+    private var _birthRate : Double
     private var _timeSinceLastEmit : TimeInterval
    
     var birthRate : TimeInterval? {
@@ -38,10 +38,11 @@ class EmitterComponent: GKComponent {
         }
     }
     
-    init(id: Int, birthRate: TimeInterval) {
+    init(id: Int, birthRate: Double) {
+
         _id = id
         _timeSinceLastEmit = 0.0
-        _birthRate = 1.0
+        _birthRate = birthRate
         super.init()
     }
     
@@ -50,6 +51,10 @@ class EmitterComponent: GKComponent {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-        NotificationCenter.default.post(name: .emit, object: nil, userInfo: ["id" : _id])
+        _timeSinceLastEmit = _timeSinceLastEmit.advanced(by: seconds)
+        if !(timeSinceLastEmit?.isLess(than: Double(1.0/_birthRate)))! {
+            NotificationCenter.default.post(name: .emit, object: nil, userInfo: ["id" : _id])
+            timeSinceLastEmit = 0
+        }
     }
 }

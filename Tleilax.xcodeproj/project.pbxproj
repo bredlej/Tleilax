@@ -38,6 +38,9 @@
 		483819322050A8F3000F4E4A /* StopEmitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819312050A8F3000F4E4A /* StopEmitState.swift */; };
 		483819342050BC0F000F4E4A /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819332050BC0F000F4E4A /* Bullet.swift */; };
 		483819362051DFE2000F4E4A /* EmitterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483819352051DFE2000F4E4A /* EmitterComponent.swift */; };
+		4838193820520A5B000F4E4A /* BulletComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838193720520A5B000F4E4A /* BulletComponent.swift */; };
+		4838193A20541998000F4E4A /* redShip.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4838193920541998000F4E4A /* redShip.atlas */; };
+		4838193C2054200B000F4E4A /* blueBlast.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4838193B2054200A000F4E4A /* blueBlast.atlas */; };
 		4861426E204DFA5C00B64D76 /* shipAnim.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426D204DFA5C00B64D76 /* shipAnim.atlas */; };
 		48614270204DFA6900B64D76 /* shipRotation.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4861426F204DFA6900B64D76 /* shipRotation.atlas */; };
 		4861427A204E04B900B64D76 /* LocalPositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48614279204E04B900B64D76 /* LocalPositionComponent.swift */; };
@@ -77,6 +80,9 @@
 		483819312050A8F3000F4E4A /* StopEmitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEmitState.swift; sourceTree = "<group>"; };
 		483819332050BC0F000F4E4A /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		483819352051DFE2000F4E4A /* EmitterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterComponent.swift; sourceTree = "<group>"; };
+		4838193720520A5B000F4E4A /* BulletComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletComponent.swift; sourceTree = "<group>"; };
+		4838193920541998000F4E4A /* redShip.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = redShip.atlas; sourceTree = "<group>"; };
+		4838193B2054200A000F4E4A /* blueBlast.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueBlast.atlas; sourceTree = "<group>"; };
 		4861426D204DFA5C00B64D76 /* shipAnim.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipAnim.atlas; sourceTree = "<group>"; };
 		4861426F204DFA6900B64D76 /* shipRotation.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shipRotation.atlas; sourceTree = "<group>"; };
 		48614279204E04B900B64D76 /* LocalPositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPositionComponent.swift; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		4827234E204C20DD00B14B28 /* Tleilax */ = {
 			isa = PBXGroup;
 			children = (
+				4838193B2054200A000F4E4A /* blueBlast.atlas */,
+				4838193920541998000F4E4A /* redShip.atlas */,
 				4861426F204DFA6900B64D76 /* shipRotation.atlas */,
 				4861426D204DFA5C00B64D76 /* shipAnim.atlas */,
 				4827238A204DD7DC00B14B28 /* engine */,
@@ -149,6 +157,7 @@
 				48614279204E04B900B64D76 /* LocalPositionComponent.swift */,
 				4838192920509E12000F4E4A /* BirthRateComponent.swift */,
 				483819352051DFE2000F4E4A /* EmitterComponent.swift */,
+				4838193720520A5B000F4E4A /* BulletComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -300,11 +309,13 @@
 			files = (
 				4861426E204DFA5C00B64D76 /* shipAnim.atlas in Resources */,
 				4827235B204C20DD00B14B28 /* Main.storyboard in Resources */,
+				4838193C2054200B000F4E4A /* blueBlast.atlas in Resources */,
 				48272352204C20DD00B14B28 /* GameScene.sks in Resources */,
 				48614270204DFA6900B64D76 /* shipRotation.atlas in Resources */,
 				4827236A204C25CB00B14B28 /* laser.png in Resources */,
 				4827235D204C20DD00B14B28 /* Assets.xcassets in Resources */,
 				48272360204C20DD00B14B28 /* LaunchScreen.storyboard in Resources */,
+				4838193A20541998000F4E4A /* redShip.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +329,7 @@
 				4838192C2050A104000F4E4A /* EmitterSystem.swift in Sources */,
 				48381922204F45B1000F4E4A /* TouchSystem.swift in Sources */,
 				4827238F204DE3A800B14B28 /* NodeComponent.swift in Sources */,
+				4838193820520A5B000F4E4A /* BulletComponent.swift in Sources */,
 				48272380204C78F300B14B28 /* StateComponent.swift in Sources */,
 				4861427A204E04B900B64D76 /* LocalPositionComponent.swift in Sources */,
 				4838191C204F42F3000F4E4A /* TouchPressed.swift in Sources */,

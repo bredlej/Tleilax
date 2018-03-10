@@ -68,6 +68,14 @@ class GameScene: SKScene {
         
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
+            if let spriteComponent = entity.component(ofType: SpriteComponent.self),
+                let _ = entity.component(ofType: BulletComponent.self)
+            {
+                spriteComponent.node.position.y += CGFloat(dt)+10.0*3.0
+                if spriteComponent.node.position.y > 700.0 {
+                    entityManager.remove(entity)
+                }
+            }
         }
         
         playerSystem.update(deltaTime: dt)
