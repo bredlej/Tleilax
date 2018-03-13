@@ -39,14 +39,14 @@ class PlayerSystem {
     }
     
     fileprivate func initPlayerWeapons() {
-        self._weaponEmitterSystem.addWeapon(id: 1, bullet: Bullet(bulletType: BulletType.large, initialPosition: CGPoint(x: -15.0, y: 20.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 3)
+        /*self._weaponEmitterSystem.addWeapon(id: 1, bullet: Bullet(bulletType: BulletType.large, initialPosition: CGPoint(x: -15.0, y: 20.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 3)
         self._weaponEmitterSystem.addWeapon(id: 2, bullet: Bullet(bulletType: BulletType.large, initialPosition: CGPoint(x: 15.0, y: 20.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 3)
         
         self._weaponEmitterSystem.addWeapon(id: 3, bullet: Bullet(bulletType: BulletType.normal, initialPosition: CGPoint(x: -50.0, y: 5.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 4)
         self._weaponEmitterSystem.addWeapon(id: 4, bullet: Bullet(bulletType: BulletType.normal, initialPosition: CGPoint(x: 50.0, y: 5.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 4)
-        
-        self._weaponEmitterSystem.addWeapon(id: 5, bullet: Bullet(bulletType: BulletType.small, initialPosition: CGPoint(x: -70.0, y: -25.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 8)
-        self._weaponEmitterSystem.addWeapon(id: 6, bullet: Bullet(bulletType: BulletType.small, initialPosition: CGPoint(x: 70.0, y: -25.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 8)
+        */
+        self._weaponEmitterSystem.addWeapon(id: 5, bullet: Bullet(bulletType: BulletType.normal, initialPosition: CGPoint(x: -70.0, y: -25.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 8)
+        self._weaponEmitterSystem.addWeapon(id: 6, bullet: Bullet(bulletType: BulletType.normal, initialPosition: CGPoint(x: 70.0, y: -25.0)+(_player.component(ofType: SpriteComponent.self)?.node.position)!), birthRate: 8)
         self._weaponEmitterSystem.stopShooting()
     }
     

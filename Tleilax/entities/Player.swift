@@ -20,7 +20,6 @@ class Player: GKEntity {
         addComponent(VelocityComponent(velocity: 0.0))
         addComponent(AnimationComponent(stateToTextureMap: [idleState: SKTextureAtlas(named: "redShip"),
                                                             rotationState: SKTextureAtlas(named: "shipRotation")]))
-        addComponent(LocalPositionComponent(position: CGPoint(x: 0.0, y: 0.0)))
         addComponent(DirectionComponent(direction: CGPoint(x: 0.0, y: 0.0)))
         addComponent(VelocityComponent(velocity: 0.0))
     }
