@@ -3,6 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PlayerSystem.init(scene:entityManager:):PlayerSystem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "WeaponSystem.shoot(bullet:):WeaponSystem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "bulletComponent.initialPosition">
+            </PersistentString>
+            <PersistentString
+               value = "bulletSpriteNode.position">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayerSystem.touchPressed(notification:):PlayerSystem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EmitterComponent.update(deltaTime:):EmitterComponent.swift">
+      </ContextState>
+      <ContextState
          contextName = "GameScene.sceneDidLoad():GameScene.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,7 +31,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "WeaponSystem.startShooting():WeaponSystem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "__workq_kernreturn:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "PlayerSystem.emit(notification:):PlayerSystem.swift">
+      </ContextState>
+      <ContextState
          contextName = "GameScene.update(_:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spriteComponent.node.position.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WeaponSystem.emit(notification:):WeaponSystem.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

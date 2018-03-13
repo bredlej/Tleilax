@@ -9,6 +9,37 @@
 import SpriteKit
 import GameplayKit
 
+extension CGPoint {
+    
+    public enum CoordinateSystem {
+        case UIKit
+        case SpriteKit
+    }
+    
+    public func coordinates(from: CoordinateSystem, to: CoordinateSystem) -> CGPoint {
+        if from == to { return self }
+        else  {
+            return CGPoint(x: self.x, y: -self.y)
+        }
+    }
+}
+
+public func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+}
+
+public func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+}
+
+public func +=( lhs: inout CGPoint, rhs: CGPoint) {
+    lhs = lhs + rhs
+}
+
+public func -=( lhs: inout CGPoint, rhs: CGPoint) {
+    lhs = lhs - rhs
+}
+
 class GameScene: SKScene {
     
     var graphs = [String : GKGraph]()
@@ -21,15 +52,11 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
-        
-        playerSystem = PlayerSystem(scene: self)
-        playerSystem.idle()
-        playerSystem.resetAnimation()
-        
         entityManager = EntityManager(scene: self)
-        entityManager.add(playerSystem.getPlayer())
-        
-        touchSystem = TouchSystem(scene: self, entityManager: entityManager)
+        playerSystem = PlayerSystem(scene: self, entityManager: entityManager)
+        playerSystem.resetAnimation()
+        touchSystem = TouchSystem(entityManager: entityManager)
+        print("Create scene \(self.size)")
     }
 
     func touchDown(atPoint pos : CGPoint) {
@@ -60,21 +87,31 @@ class GameScene: SKScene {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
 
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
-        
         let dt = currentTime - self.lastUpdateTime
         
         for entity in entityManager.entities {
             entity.update(deltaTime: dt)
+            updateBullets(entity, dt)
         }
         
         playerSystem.update(deltaTime: dt)
         
         self.lastUpdateTime = currentTime
+    }
+    
+    fileprivate func updateBullets(_ entity: GKEntity, _ dt: Double) {
+        if let spriteComponent = entity.component(ofType: SpriteComponent.self),
+            let _ = entity.component(ofType: BulletComponent.self)
+        {
+            spriteComponent.node.position.y += CGFloat(dt)+10.0*3.0
+            if spriteComponent.node.position.y > 700.0 {
+                entityManager.remove(entity)
+            }
+        }
     }
 }

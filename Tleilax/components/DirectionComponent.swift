@@ -10,9 +10,9 @@ import GameplayKit
 
 class DirectionComponent: GKComponent {
 
-    private var _direction : CGVector
+    private var _direction : CGPoint
     
-    var direction : CGVector? {
+    var direction : CGPoint? {
         set
         {
             _direction = (newValue)!
@@ -23,7 +23,7 @@ class DirectionComponent: GKComponent {
         }
     }
     
-    init(direction: CGVector) {
+    init(direction: CGPoint) {
         self._direction = direction
         super.init()
     }

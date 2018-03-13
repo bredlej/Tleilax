@@ -15,6 +15,7 @@ class SpriteComponent: GKComponent {
 
     init(texture: SKTexture) {
         node = SKSpriteNode(texture: texture, color: .white, size: texture.size())
+        node.position = CGPoint(x: 0.0, y: 0.0)
         super.init()
     }
     

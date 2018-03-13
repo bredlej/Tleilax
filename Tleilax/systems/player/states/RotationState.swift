@@ -10,12 +10,6 @@ import GameplayKit
 
 class RotationState : GKState {
     
-    var entity : GKEntity?
-    
-    init(entity: GKEntity) {
-        self.entity = entity
-    }
-    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is IdleState.Type
     }
