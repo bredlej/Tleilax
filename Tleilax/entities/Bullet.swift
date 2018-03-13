@@ -10,10 +10,10 @@ import GameplayKit
 
 class Bullet : GKEntity {
    
-    override init() {
+    init(bulletType: BulletType, initialPosition: CGPoint) {
         super.init()
         addComponent(SpriteComponent(texture: SKTextureAtlas(named: "blueBlast.atlas").textureNamed("blueBlast3")))
-        addComponent(BulletComponent())
+        addComponent(BulletComponent(bulletType: bulletType, initialPosition: initialPosition))
     }
     
     required init?(coder aDecoder: NSCoder) {

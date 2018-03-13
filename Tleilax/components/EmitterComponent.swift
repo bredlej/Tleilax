@@ -13,13 +13,11 @@ class EmitterComponent: GKComponent {
     private var _id: Int
     private var _birthRate : Double
     private var _timeSinceLastEmit : TimeInterval
+    private var _readyToEmit: Bool
    
-    var birthRate : TimeInterval? {
-        set {
-            _birthRate = (newValue)!
-        }
+    var id: Int? {
         get {
-            return _birthRate
+            return _id
         }
     }
     
@@ -32,17 +30,29 @@ class EmitterComponent: GKComponent {
         }
     }
     
-    var id: Int? {
+    var birthRate : TimeInterval? {
+        set {
+            _birthRate = (newValue)!
+        }
         get {
-            return _id
+            return _birthRate
+        }
+    }
+    
+    var readyToEmit: Bool {
+        set {
+            _readyToEmit = newValue
+        }
+        get {
+            return _readyToEmit
         }
     }
     
     init(id: Int, birthRate: Double) {
-
         _id = id
         _timeSinceLastEmit = 0.0
         _birthRate = birthRate
+        _readyToEmit = false
         super.init()
     }
     
@@ -50,11 +60,7 @@ class EmitterComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func update(deltaTime seconds: TimeInterval) {
-        _timeSinceLastEmit = _timeSinceLastEmit.advanced(by: seconds)
-        if !(timeSinceLastEmit?.isLess(than: Double(1.0/_birthRate)))! {
-            NotificationCenter.default.post(name: .emit, object: nil, userInfo: ["id" : _id])
-            timeSinceLastEmit = 0
-        }
+    func emit() {
+        _readyToEmit = false
     }
 }
