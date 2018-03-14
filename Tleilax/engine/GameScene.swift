@@ -46,6 +46,7 @@ class GameScene: SKScene {
     var entityManager: EntityManager!
     var playerSystem: PlayerSystem!
     var touchSystem: TouchSystem!
+    var enemySystem: EnemySystem!
     
     private var lastUpdateTime : TimeInterval = 0
     
@@ -56,6 +57,8 @@ class GameScene: SKScene {
         playerSystem = PlayerSystem(scene: self, entityManager: entityManager)
         playerSystem.resetAnimation()
         touchSystem = TouchSystem(entityManager: entityManager)
+        enemySystem = EnemySystem(scene: self, entityManager: entityManager)
+        enemySystem.addEnemy(position: CGPoint(x: 50.0, y: 500.0))
         print("Create scene \(self.size)")
     }
 
